@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MeetYourFriends::Application.load_tasks
+MeetWithFriends::Application.load_tasks
