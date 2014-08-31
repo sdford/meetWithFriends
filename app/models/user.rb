@@ -1,3 +1,18 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :password_digest, :photo, :points, :username
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :photo, :points, :username
+
+  validates_format_of :email, :with => /^[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))$/i, :message => "Email is not in a valid format"
+  validates_uniqueness_of :email, :case_sensitive => false, :allow_blank => false
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_presence_of :username
+
+  scope :alphabetical, order('last_name, first_name')
+  scope :by_points, order('points')
+
+  def get_coord
+    
+  end
+
+
 end
