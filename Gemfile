@@ -6,6 +6,8 @@ gem 'rails', '3.2.17'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'validates_timeliness', '~> 3.0'
+gem 'geocoder'
 
 
 # Gems used only for assets and not required
