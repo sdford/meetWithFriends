@@ -8,4 +8,5 @@ class Invitation < ActiveRecord::Base
 
   scope :by_date, order('date')
   
+  #checkin
 end
