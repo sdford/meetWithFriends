@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
   end
 
   def check_timeliness(check_in_time) #See if user is on time
-    return ((check_in_time - start) * 24 * 60).to_i #convert to minutes
+    ((check_in_time - start) * 24 * 60).to_i #convert to minutes
   end
 
   def within_radius
@@ -27,9 +27,14 @@ class Event < ActiveRecord::Base
     return true
   end
 
+  def is_attendee(user)
+    user.invitations.select{|i| i.event_id == self.id}.empty?
+  end
+  
   #check if user is in radius and within certain timeframe
   def eligible_to_check_in(user, check_in_time)
-    if check_timeliness(check_in_time) < -60 || !within_radius(user)
+    if check_timeliness(check_in_time) < -60 || !within_radius(user) ||
+        !is_attendee(user)
       return false
     end
     return true
