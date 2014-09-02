@@ -6,7 +6,8 @@
       <tr>
         <th>Name</th>
   			<th>Email</th>
-        <th class="no-sort">&nbsp;</th>
+        <th>Username</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
         <tr>
           <td><%= link_to (user.first_name + user.last_name), user_path(user) %></td>
           <td><%= user.email %></td>
+          <td><%= user.username %></td>
           <td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), edit_user_path(user), :class => 'btn btn-md' %></td>
         </tr>
       <% end %>

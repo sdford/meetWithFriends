@@ -1,7 +1,5 @@
 <div class="row">
   <div class="col-sm-6 col-med-6 col-lg-6">
-    <h2>Team Details</h2>
-
     <p>
       <b>Title: </b> <%= @event.nil? ? "---" : @event.title %>
     </p>
@@ -17,7 +15,6 @@
     <p>
       <b>Description: </b><%= @event.nil? ? "---" : @event.description %>
     </p>
-
   </div>
 </div>
 
@@ -39,7 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @event.users.each do |user| %>
+      <% @attendees.each do |user| %>
         <tr>
           <td><%= link_to (user.first_name + user.last_name), user_path(user) %></td>
           <td><%= user.email %></td>

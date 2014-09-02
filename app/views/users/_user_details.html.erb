@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-6 col-med-6 col-lg-6">
+
+    <p>
+        PLACE PHOTO HERE
+    </p>
+    <p>
+      <b>Name: </b> <%= @user.nil? ? "---" : @user.proper_name %>
+    </p>
+
+    <p>
+      <b>Email: </b><%= @user.nil? ? "---" : @user.email %>
+    </p>
+
+    <p>
+      <b>Username: </b><%= @user.nil? ? "---" : @user.username %>
+    </p>
+    
+    <p>
+      <b>Points: </b><%= @user.nil? ? "---" : @user.points %>
+    </p>
+  </div>
+</div>
