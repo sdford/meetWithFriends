@@ -8,6 +8,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   
+  def check_in
+    @event = Event.find(params[:id])
+    @user = Event.find(params[:user])
+    @event.check_in(@user)
+  end
+  
   def index
     @events = Event.by_date.paginate(:page => params[:page]).per_page(10)
   end

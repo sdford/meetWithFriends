@@ -8,6 +8,13 @@ gem 'rails', '3.2.17'
 gem 'sqlite3'
 gem 'validates_timeliness', '~> 3.0'
 gem 'geocoder'
+gem 'validates_timeliness', '~> 3.0'
+gem 'simple_form'
+gem 'will_paginate'
+gem 'carrierwave'
+gem 'nested_form'
+gem 'cancancan', '~> 1.7'
+gem "mini_magick"
 
 
 # Gems used only for assets and not required
@@ -24,8 +31,16 @@ end
 
 gem 'jquery-rails'
 
+group :development, :production do
+  gem 'faker'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+end
+
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
