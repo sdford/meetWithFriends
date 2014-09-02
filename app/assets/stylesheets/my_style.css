@@ -1,1 +1,7 @@
 /* CUSTOM CSS/STYLING HERE */
+label {
+    display: inline-block;
+    width:100px;
+    text-align: right;
+    padding: 1px 2px 3px 6px;
+}
