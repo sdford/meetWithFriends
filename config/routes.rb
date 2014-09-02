@@ -3,6 +3,7 @@ MeetWithFriends::Application.routes.draw do
   resources :users
   resources :invitations
   resources :events
+  resources :sessions
   
   match 'home' => 'home#index', :as => :home
   
