@@ -1,0 +1,27 @@
+<% if @events.empty? %>
+  &nbsp;&nbsp;<em>None at this time</em>
+<% else %>
+  <h3>Events</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+  			<th>Location</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= link_to event.title, event_path(event) %></td>
+          <td><%= event.location %></td>
+          <td><%= event.start %></td>
+          <td><%= event.end %></td>
+          <td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), edit_event_path(event), :class => 'btn btn-md' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

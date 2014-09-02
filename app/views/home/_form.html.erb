@@ -1,0 +1,13 @@
+<h3>Sign Up!</h3>
+
+<%= simple_form_for @user do |user_form| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> User </legend>
+    <%= render :partial => "user_fields", :locals => { :f => user_form } %>
+  </fieldset>
+  
+  <div class="form-actions">
+    <%= user_form.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', home_path, :class => 'btn btn-danger' %>
+  </div>
+<% end %>
