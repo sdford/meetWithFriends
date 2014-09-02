@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find(params[:id])
-    @attendees = Invitations.find_by_event_id(@event.id).map{|i| Users.find_by_id(i.user_id)} #should be a scope here
+    @attendees = @event.users.paginate(:page => params[:page]).per_page(10) #should be a scope here
   end
   
   def create
