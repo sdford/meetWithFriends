@@ -9,4 +9,12 @@ class HomeController < ApplicationController
 
   end
 
+  def new
+
+  end
+
+  def register
+  	@user = User.new
+  end
+
 end
