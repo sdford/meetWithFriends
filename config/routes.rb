@@ -16,5 +16,5 @@ MeetWithFriends::Application.routes.draw do
   get 'check_in' => 'events#check_in', :as => :check_in
   
   # Set the root url
-  root :to => 'home#index'
+  root :to => 'sessions#new'
 end
