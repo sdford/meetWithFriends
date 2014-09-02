@@ -1,0 +1,10 @@
+<div class="fields">
+  <div class="min_attraction">
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+      <%= f.input :username, :collection => Student::GENDER_LIST, :include_blank => false %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+  </div>
+</div>

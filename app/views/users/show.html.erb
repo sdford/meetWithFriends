@@ -1,0 +1,13 @@
+<div class="row ">
+	<div class="col-sm-10 col-md-10 col-lg-10">
+		<h2>User Details</h2>
+		<%= render :partial => "user_details" %>
+	</div>
+  <br>
+  <br>
+</div>
+
+<div class="form-actions">
+  <%= link_to raw("<span class='glyphicon glyphicon-list'></span> Display All Users"), users_path, :class => 'btn btn-default myDisplayAllButton'  %>&nbsp;&nbsp;
+  <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit #{@user.proper_name}"), edit_user_path(@user), :class => 'btn btn-primary myEditButton' %>&nbsp;&nbsp;
+</div>

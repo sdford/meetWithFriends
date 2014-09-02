@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 
   scope :attendees, joins(:invitations).order('user_id')
   scope :alphabetical, order('title')
-  scope :by_time, order('start, end')
+  scope :by_date, order('start, end')
 
 
   def get_coord #Get coord of meeting location
