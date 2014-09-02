@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  # Use built-in rails support for password protection
+  has_secure_password
+  
+  has_many :invitations
+  has_many :events, :through => :invitations
+  
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :photo, :points, :username
 
   validates_format_of :email, :with => /^[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))$/i, :message => "Email is not in a valid format"
@@ -12,6 +18,10 @@ class User < ActiveRecord::Base
 
   def get_coord
     
+  end
+
+  def proper_name
+    "#{first_name} #{last_name}"
   end
 
 

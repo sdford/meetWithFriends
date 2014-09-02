@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = Users.alphabetical
+    @users = User.alphabetical
   end
   
   def show
