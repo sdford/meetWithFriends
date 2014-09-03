@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
   
   def index
-    @events = Event.by_date.paginate(:page => params[:page]).per_page(10)
+    @events = Event.by_date.paginate(:page => params[:page]).per_page(5)
   end
   
   def show
