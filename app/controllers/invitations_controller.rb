@@ -14,7 +14,8 @@ class InvitationsController < ApplicationController
   
   def create
     @invitation = Invitation.new(params[:invitation])
-    if @invitation.save
+    @invitation.date = Date.today
+    if @invitation.save!
       # if saved to database
       flash[:notice] = "Congratulations! You have successfully registered for Project C.H.U.C.K"
       redirect_to @invitation

@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-sm-6 col-med-6 col-lg-6">
     <p>
+      <b>Checked In: </b><%= event.checked_in(current_user) ? "Yes" : "No" %>
+    </p>
+    <p>
       <b>Title: </b> <%= @event.nil? ? "---" : @event.title %>
     </p>
 
@@ -19,7 +22,7 @@
 </div>
 
 <p>
-  <h4>Required Attendees</h4>
+  <h4>Invited Attendees</h4>
 </p>
 
 <% if @event.users.empty? %>

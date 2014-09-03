@@ -40,6 +40,15 @@
           <div id="<%= count.to_s %>" class="panel-collapse collapse in">
             <div class="panel-body">
               <p>
+                <b>Checked In: </b><%= event.checked_in(current_user) ? "Yes" : "No" %>
+              </p>
+              <p>
+                <b>Location: </b><%= event.nil? ? "---" : event.location %>
+              </p>
+              <p>
+                <b>Coordinates: </b><%= event.nil? ? "---" : "#{event.latitude},#{event.longitude}" %>
+              </p>
+              <p>
                 <b>Start Time: </b><%= event.nil? ? "---" : event.start.strftime("%m/%d/%Y @ %I:%M%p") %>
               </p>
 
@@ -77,8 +86,9 @@
                 </tbody>
               </table>
             </div>
+            <%= link_to raw("<span class='glyphicon glyphicon-ok'></span> Check In"), {:controller => :events, :action => :check_in, :method => "post"}, {:class => 'btn btn-success'} %>
             <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit #{event.title}"), edit_event_path(event), :class => 'btn btn-primary myEditButton' %>&nbsp;&nbsp;
-            <%= link_to raw("<span class='glyphicon glyphicon-ok'></span> Cancel #{event.title}"), event, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-success' %>            
+            <%= link_to raw("<span class='glyphicon glyphicon-trash'></span> Cancel #{event.title}"), event, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' %>            
           </div>
         <% end %>
       </div>

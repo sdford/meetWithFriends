@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style>
+   /* Begin Navigation Bar Styling */
+   #nav {
+      width: 100%;
+      float: center;
+      position: absolute;
+      left: 42%;
+      margin: auto;
+      padding: 0;
+      list-style: none;
+       }
+
+   #nav li {
+      float: left;
+       }
+
+   #nav li a {
+      display: block;
+      padding: 3px 15px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #069;
+      float: center;
+      border-right: 2px solid #000000;
+      border-left: 2px solid #000000;
+      border-top: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+       }
+
+   #nav li a:hover {
+      color: #c00;
+      background-color: #fff; }
+   /* End navigation bar styling. */
+    #button {
+     line-height: 12px;
+     width: 18px;
+     font-size: 8pt;
+     font-family: tahoma;
+     margin-top: 1px;
+     margin-right: 2px;
+     position:absolute;
+     top:10px;
+     right:60px;
+ }
+    #hack {
+     line-height: 12px;
+     font-size: 16pt;
+     font-family: tahoma;
+     position:absolute;
+     top:24px;
+     left:10px;
+ }
+  
+</style>
+</head>
+
+<body>
+<div id="wrap">
+   
+   <!-- Here's all it takes to make this navigation bar. -->
+   <ul id="nav">
+      <li><%= link_to raw("Home"), home_path, :id => 'Home' %></li>
+      <li><%= link_to raw("Events"), events_path, :id => 'Events' %></li>
+      <li><%= link_to raw("Users"), users_path, :id => 'Users' %></li>
+   </ul>
+   <!-- That's it! -->
+   <div id="hack">
+      <%= "Welcome, " + current_user.proper_name%>
+   </div>
+
+   <ul id="button" role="navigation">
+      <li>
+          <button type="button" class="btn btn-primary navbar-btn" onclick="window.location.href='<%= logout_path %>'"> Logout </button>
+      </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -19,6 +19,7 @@
           <td><%= event.start.strftime("%m/%d/%y %l:%M %p") %></td>
           <td><%= event.end.strftime("%m/%d/%y %l:%M %p") %></td>
           <td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), edit_event_path(event), :class => 'btn btn-md' %></td>
+          <td><%= link_to raw("<span class='glyphicon glyphicon-ok'></span> Check In"), {:controller => :events, :action => :check_in}, {:method => :post, :class => 'btn btn-success'} %></td>
         </tr>
       <% end %>
     </tbody>

@@ -54,6 +54,14 @@ class Event < ActiveRecord::Base
   	end
   end
 
+  def checked_in(user)
+    if self.invitations.empty?
+      return false
+    else
+      self.invitations.select{|i| i.user_id == user.id}.first.checked_in
+    end
+  end
+  
   #give points based on timeliness
   def assign_points
     
