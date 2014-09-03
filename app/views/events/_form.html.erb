@@ -1,4 +1,4 @@
-<%= simple_form_for @event do |event_form| %>
+<%= simple_nested_form_for @event do |event_form| %>
   <fieldset>
     <legend><h2><%= controller.action_name.capitalize %> Event </h2></legend>
     <%= render :partial => "event_fields", :locals => { :f => event_form } %>

@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :description, :end, :location, :location_coord, :start, :active, :title
+  attr_accessible :description, :end, :location, :location_coord, :start, :active, :title, :invitations_attributes
 
 
 
@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   has_many :users, :through => :invitations
 
   accepts_nested_attributes_for :invitations, :allow_destroy => true, :reject_if => :all_blank
-  
+
   validates_time :start
   validates_time :end
 
