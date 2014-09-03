@@ -59,7 +59,8 @@ class EventsController < ApplicationController
         location = client.spots(40.442492, -79.942553, :radius => 10000, :name => @event.location).first
       else
         location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
-      end      @event.latitude = location.lat
+      end      
+      @event.latitude = location.lat
       @event.longitude = location.lng
     end
     if @event.update_attributes(params[:event])
