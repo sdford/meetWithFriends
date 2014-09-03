@@ -46,6 +46,14 @@
      top:10px;
      right:60px;
  }
+    #hack {
+     line-height: 12px;
+     font-size: 16pt;
+     font-family: tahoma;
+     position:absolute;
+     top:24px;
+     left:10px;
+ }
   
 </style>
 </head>
@@ -60,6 +68,10 @@
       <li><a href="users">Users</a></li>
    </ul>
    <!-- That's it! -->
+   <div id="hack">
+      <%= "Welcome, " + current_user.proper_name%>
+   </div>
+
    <ul id="button" role="navigation">
       <li>
           <button type="button" class="btn btn-primary navbar-btn" onclick="window.location.href='<%= logout_path %>'"> Logout </button>
