@@ -5,11 +5,11 @@
     </p>
 
     <p>
-      <b>Start Time: </b><%= @event.nil? ? "---" : @event.start %>
+      <b>Start Time: </b><%= @event.nil? ? "---" : @event.start.strftime("%m/%d/%Y @ %I:%M%p") %>
     </p>
 
     <p>
-      <b>End Time: </b><%= @event.nil? ? "---" : @event.end %>
+      <b>End Time: </b><%= @event.nil? ? "---" : @event.end.strftime("%m/%d/%Y @ %I:%M%p") %>
     </p>
     
     <p>
