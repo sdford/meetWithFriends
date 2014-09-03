@@ -13,3 +13,8 @@ label {
   width: 100%;
   color: black;
 }
+
+#nav li { 
+display: inline; 
+padding: 20px; 
+}
