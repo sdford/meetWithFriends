@@ -6,6 +6,7 @@ MeetWithFriends::Application.routes.draw do
   resources :sessions
   
   match 'home' => 'home#index', :as => :home
+  match 'save_coords' => 'application#save_coords'
   
 #   match 'user/edit' => 'users#edit', :as => :edit_current_user
 #   match 'signup' => 'users#new', :as => :signup
