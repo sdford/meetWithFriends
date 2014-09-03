@@ -15,7 +15,7 @@ gem 'carrierwave'
 gem 'nested_form'
 gem 'cancancan', '~> 1.7'
 gem "mini_magick"
-
+gem "google_places"
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -10,11 +10,13 @@
     function showPosition(position) {
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
+      var user = <%= current_user.id %>;
       
       $.ajax({
         type: "POST",
         url: "save_coords",
         data: {
+          user: user,
           latitude: latitude,
           longitude: longitude
         },
