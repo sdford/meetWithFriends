@@ -23,5 +23,6 @@
       <% end %>
     </tbody>
   </table>
+  <div class="digg_pagination"> <div clas="page_info"> <%= page_entries_info @events %> </div> <%= will_paginate @events, :container => true, :previous_label => "Previous", :next_label => "Next", :inner_window => 2 %> </div>
 <% end %>
 <h4><%= link_to raw("<i class='icon-plus icon-white'></i>Create an Event"), new_event_path, :class => 'btn btn-primary'%></h4> 
