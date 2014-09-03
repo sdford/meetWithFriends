@@ -40,17 +40,45 @@
           <div id="<%= count.to_s %>" class="panel-collapse collapse in">
             <div class="panel-body">
               <p>
-                <b>Start Time: </b><%= event.nil? ? "---" : event.start %>
+                <b>Start Time: </b><%= event.nil? ? "---" : event.start.strftime("%m/%d/%Y @ %I:%M%p") %>
               </p>
 
               <p>
-                <b>End Time: </b><%= event.nil? ? "---" : event.end %>
+                <b>End Time: </b><%= event.nil? ? "---" : event.end.strftime("%m/%d/%Y @ %I:%M%p") %>
               </p>
               
               <p>
                 <b>Description: </b><%= event.nil? ? "---" : event.description %>
               </p>
+              <b>
+                Attendees
+              </b>
+            </br>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Points</th>
+                    <th>&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% User.alphabetical.each do |attendee| %>
+                    <tr>
+                      <td><%= link_to (attendee.proper_name), user_path(attendee) %></td>
+                      <td><%= attendee.email %></td>
+                      <td><%= attendee.points %></td>
+                      <td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), edit_user_path(attendee), :class => 'btn btn-md' %></td>
+                      <td> Delete </td>
+                    </tr>
+                  </br>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
+            <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit #{event.title}"), edit_event_path(event), :class => 'btn btn-primary myEditButton' %>&nbsp;&nbsp;
+            <%= link_to raw("<span class='glyphicon glyphicon-ok'></span> Cancel #{event.title}"), event, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-success' %>            
           </div>
         <% end %>
       </div>
