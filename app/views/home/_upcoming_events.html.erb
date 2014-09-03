@@ -46,7 +46,9 @@
               <p>
                 <b>End Time: </b><%= event.nil? ? "---" : event.end.strftime("%m/%d/%Y @ %I:%M%p") %>
               </p>
-              
+              <p>
+                <b>Location: </b><%= event.location.nil? ? "---" : event.location %>
+              </p>
               <p>
                 <b>Description: </b><%= event.nil? ? "---" : event.description %>
               </p>
