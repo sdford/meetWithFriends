@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     if @event.save!
       # if saved to database
-      flash[:notice] = "Successfully created #{@event.name}."
+      flash[:notice] = "Successfully created #{@event.title}."
       redirect_to @event # go to show Event page
     else
       # go back to the 'new' form
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
-      flash[:notice] = "Successfully updated #{@event.name}."
+      flash[:notice] = "Successfully updated #{@event.title}."
       redirect_to @event
     else
       render :action => 'edit'
@@ -52,7 +52,7 @@ class EventsController < ApplicationController
       i.destroy
     end
     @event.destroy
-    flash[:notice] = "Successfully removed #{@event.name} from the Meet with Friends System"
+    flash[:notice] = "Successfully removed #{@event.title} from the Meet with Friends System"
     redirect_to events_url
   end
 

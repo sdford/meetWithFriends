@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20140902213044) do
     t.datetime "updated_at",     :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "field"
     t.string   "title"
     t.boolean  "active"
   end

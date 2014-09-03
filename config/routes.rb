@@ -7,6 +7,7 @@ MeetWithFriends::Application.routes.draw do
   
   match 'home' => 'home#index', :as => :home
   match 'save_coords' => 'application#save_coords'
+  match 'register' => 'home#register', :as => :register
   
 #   match 'user/edit' => 'users#edit', :as => :edit_current_user
 #   match 'signup' => 'users#new', :as => :signup
@@ -17,5 +18,5 @@ MeetWithFriends::Application.routes.draw do
   get 'check_in' => 'events#check_in', :as => :check_in
   
   # Set the root url
-  root :to => 'sessions#new'
+  root :to => 'home#index'
 end
