@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   require 'will_paginate/array'
-  
+
   def index
   	@user = User.new
     @users = User.alphabetical
@@ -10,7 +10,6 @@ class HomeController < ApplicationController
   end
 
   def new
-
   end
 
   def register

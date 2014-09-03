@@ -1,12 +1,13 @@
 <% if logged_in? %>
   <div>
       <div class="col-sm-12 col-md-12 col-lg-5" style="margin-top: 20px;">
+        <h4><%= link_to raw("<i class='icon-plus icon-white'></i>Create an Event"), new_event_path, :class => 'btn btn-primary'%></h4> 
         <div>
           <%= render :partial => "upcoming_events" %>
         </div>
-        <div>
+<!--         <div>
           <%= render :partial => "users" %>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>      

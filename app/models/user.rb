@@ -24,5 +24,8 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def is_attendee(user)
+    user.invitations.select{|i| i.user_id == self.id}.empty?
+  end
 
 end

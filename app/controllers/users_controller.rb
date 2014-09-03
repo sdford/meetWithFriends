@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  
+
   def new
     @user = User.new
+    authorize! :new, current_user
   end
   
   def edit
@@ -9,13 +10,21 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.alphabetical.paginate(:page => params[:page]).per_page(5)
+    if check_login
+      @users = User.alphabetical.paginate(:page => params[:page]).per_page(5)
+    else
+      redirect_to home_path
+    end
   end
   
   def show
-    @user = User.find(params[:id])
-    @events = @user.events
-    @users = User.alphabetical
+    if check_login
+      @user = User.find(params[:id])
+      @events = @user.events
+      @users = User.alphabetical
+    else
+      redirect_to home_path
+    end
   end
   
   def create
@@ -28,6 +37,7 @@ class UsersController < ApplicationController
       # go back to the 'new' form
       render :action => 'new'
     end
+    authorize! :create, current_user
   end
   
   def update
@@ -38,13 +48,14 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+    authorize! :update, current_user
   end
   
   def destroy
     @user = User.find(params[:id])
     @user.destory
     flash[:notice] = "Successfully removed #{@user.proper_name} from the Meet with Friends System"
-    redirect_to @user
+    redirect_to home_path
   end
   
 end

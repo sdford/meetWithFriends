@@ -7,15 +7,18 @@ class Ability
       user ||= User.new # guest user (not logged in)
       #if user.is_admin?
         #can :manage, :all
-      if user.logged_in?
-        can [:create, :update, :edit], [User] :if => :u_email == :user_email
-        #can [:show, :update], User do |u|
-          #u.email == user.email
-        #end
-      else
+      if user.email.nil?
         can [:create, :update], User
+
+      else
+        can [:create, :update, :read], User do |u|
+          u.email == user.email
+        end
+        can [:create, :read], Event
+        can [:update, :edit, :destroy], Event do |e|
+          e.invitations.select{|i| i.event_id == self.id}.empty?
+        end
       end
-    #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
