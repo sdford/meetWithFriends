@@ -1,11 +1,15 @@
 class Event < ActiveRecord::Base
   attr_accessible :description, :end, :location, :location_coord, :start, :active, :title
 
+
+
   has_many :invitations
   has_many :users, :through => :invitations
 
-  validates_time :start, :before => :end
-  validates_time :end, :after => :end
+  accepts_nested_attributes_for :invitations, :allow_destroy => true, :reject_if => :all_blank
+  
+  validates_time :start
+  validates_time :end
 
   scope :attendees, joins(:invitations).order('user_id')
   scope :alphabetical, order('title')

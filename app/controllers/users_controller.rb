@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.alphabetical
+    @users = User.alphabetical.paginate(:page => params[:page]).per_page(5)
   end
   
   def show
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated #{@user.name}."
+      flash[:notice] = "Successfully updated #{@user.proper_name}."
       redirect_to @user
     else
       render :action => 'edit'
