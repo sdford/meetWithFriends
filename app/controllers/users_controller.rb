@@ -10,21 +10,13 @@ class UsersController < ApplicationController
   end
   
   def index
-    if check_login
       @users = User.alphabetical.paginate(:page => params[:page]).per_page(5)
-    else
-      redirect_to home_path
-    end
   end
   
   def show
-    if check_login
       @user = User.find(params[:id])
       @events = @user.events
       @users = User.alphabetical
-    else
-      redirect_to home_path
-    end
   end
   
   def create
