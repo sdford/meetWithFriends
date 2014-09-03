@@ -2,7 +2,7 @@
 <% if @events.empty? %>
   &nbsp;&nbsp;<em>None at this time</em>
 <% else %>
-  <h3>Events</h3>
+<!--   <h3>Events</h3>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -24,5 +24,35 @@
         </tr>
       <% end %>
     </tbody>
-  </table>
+  </table> -->
+  <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <% count = 0 %>
+        <% @events.each do |event| %>
+          <% count += 1 %>
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#<%= count.to_s %>">
+                <b>Title: </b> <%= event.nil? ? "---" : event.title %>
+              </a>
+            </h4>
+          </div>
+          <div id="<%= count.to_s %>" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <p>
+                <b>Start Time: </b><%= event.nil? ? "---" : event.start %>
+              </p>
+
+              <p>
+                <b>End Time: </b><%= event.nil? ? "---" : event.end %>
+              </p>
+              
+              <p>
+                <b>Description: </b><%= event.nil? ? "---" : event.description %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
 <% end %>
