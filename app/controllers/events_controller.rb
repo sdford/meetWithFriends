@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @user = current_user
     @event.check_in(@user)
+    redirect_to home_url
   end
   
   def index
@@ -28,15 +29,13 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(params[:event])
-    client = GooglePlaces::Client.new("AIzaSyC5TfII21fg8SeJtbkxc9Whh3kDO-IKCx4")
-    client.spots_by_query(@event.location).first
-#     puts "blah"
-#     puts current_user.latitude
-#     puts current_user.longitude
-#     puts "blah"
-    location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
-    @event.latitude = location.lat
-    @event.longitude = location.lng
+    if logged_in?
+      client = GooglePlaces::Client.new("AIzaSyC5TfII21fg8SeJtbkxc9Whh3kDO-IKCx4")
+      client.spots_by_query(@event.location).first
+      location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
+      @event.latitude = location.lat
+      @event.longitude = location.lng
+    end
     if @event.save!
       # if saved to database
       flash[:notice] = "Successfully created #{@event.title}."
@@ -49,18 +48,13 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find(params[:id])
-    client = GooglePlaces::Client.new("AIzaSyC5TfII21fg8SeJtbkxc9Whh3kDO-IKCx4")
-    client.spots_by_query(@event.location).first
-#     puts "blah"
-#     puts current_user.latitude
-#     puts current_user.longitude
-#     puts "blah"
-    location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
-#     puts "blah"
-#     puts location
-#     puts "blah"
-    @event.latitude = location.lat
-    @event.longitude = location.lng
+    if logged_in?
+      client = GooglePlaces::Client.new("AIzaSyC5TfII21fg8SeJtbkxc9Whh3kDO-IKCx4")
+      client.spots_by_query(@event.location).first
+      location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
+      @event.latitude = location.lat
+      @event.longitude = location.lng
+    end
     if @event.update_attributes(params[:event])
       flash[:notice] = "Successfully updated #{@event.title}."
       redirect_to home_url
