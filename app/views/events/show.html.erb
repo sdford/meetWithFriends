@@ -8,7 +8,7 @@
 </div>
 
 <div class="form-actions">
-  <%= link_to raw("<span class='glyphicon glyphicon-list'></span> Display All Events"), events_path, :class => 'btn btn-default myDisplayAllButton'  %>&nbsp;&nbsp;
+  <%= link_to raw("<span class='glyphicon glyphicon-list'></span> Display All Events"), home_path, :class => 'btn btn-default myDisplayAllButton'  %>&nbsp;&nbsp;
   <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit #{@event.title}"), edit_event_path(@event), :class => 'btn btn-primary myEditButton' %>&nbsp;&nbsp;
   <%= link_to raw("<span class='glyphicon glyphicon-ok'></span> Cancel #{@event.title}"), @event, :confirm => 'Are you sure?', :method => :delete , :class => 'btn btn-success' %>
 
