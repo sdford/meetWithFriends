@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
   
+  before_filter :check_login
+  authorize_resource
+  
   def new
     @event = Event.new
   end
