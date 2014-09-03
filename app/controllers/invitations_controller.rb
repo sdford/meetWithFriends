@@ -1,10 +1,12 @@
 class InvitationsController < ApplicationController
 
   before_filter :check_login
-  authorize_resource
+
   
   def new
     @invitation = Invitation.new
+    @users = User.all.map { |u| u.proper_name  }
+    @events = Event.all.map { |e| e.title  }
   end
 
   def index
@@ -16,7 +18,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(params[:invitation])
     if @invitation.save
       # if saved to database
-      flash[:notice] = "Congratulations! You have successfully registered for Project C.H.U.C.K"
+      flash[:notice] = "Congratulations! You have created an invitation"
       redirect_to @invitation
     else
       # go back to the 'new' form

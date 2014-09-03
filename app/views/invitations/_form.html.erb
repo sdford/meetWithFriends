@@ -1,0 +1,11 @@
+<%= simple_form_for @invitation do |invitation_form| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Invitation </legend>
+    <%= render :partial => "invitation_fields", :locals => { :f => invitation_form } %>
+  </fieldset>
+  
+  <div class="form-actions">
+    <%= invitation_form.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', home_path, :class => 'btn btn-danger' %>
+  </div>
+<% end %>
