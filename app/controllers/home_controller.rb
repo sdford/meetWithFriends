@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   	@user = User.new
     @users = User.alphabetical
     @events = Event.upcoming.by_date
-
+    
   end
 
   def new

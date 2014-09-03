@@ -35,6 +35,7 @@ class Event < ActiveRecord::Base
   def is_attendee(user)
     user.invitations.select{|i| i.event_id == self.id}.empty?
   end
+
   
   #check if user is in radius and within certain timeframe
   def eligible_to_check_in(user, check_in_time)
@@ -52,6 +53,10 @@ class Event < ActiveRecord::Base
   	    invitation.checked_in = true
   	    invitation.save!
   	end
+  end
+
+  def attendees
+    return self.users
   end
 
   def checked_in(user)

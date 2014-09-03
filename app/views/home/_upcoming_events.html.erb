@@ -55,7 +55,9 @@
               <p>
                 <b>End Time: </b><%= event.nil? ? "---" : event.end.strftime("%m/%d/%Y @ %I:%M%p") %>
               </p>
-              
+              <p>
+                <b>Location: </b><%= event.location.nil? ? "---" : event.location %>
+              </p>
               <p>
                 <b>Description: </b><%= event.nil? ? "---" : event.description %>
               </p>
@@ -73,7 +75,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% User.alphabetical.each do |attendee| %>
+                  <% event.users.each do |attendee| %>
                     <tr>
                       <td><%= link_to (attendee.proper_name), user_path(attendee) %></td>
                       <td><%= attendee.email %></td>
@@ -81,7 +83,6 @@
                       <td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), edit_user_path(attendee), :class => 'btn btn-md' %></td>
                       <td> Delete </td>
                     </tr>
-                  </br>
                   <% end %>
                 </tbody>
               </table>
@@ -89,6 +90,7 @@
             <%= link_to raw("<span class='glyphicon glyphicon-ok'></span> Check In"), {:controller => :events, :action => :check_in, :method => "post"}, {:class => 'btn btn-success'} %>
             <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit #{event.title}"), edit_event_path(event), :class => 'btn btn-primary myEditButton' %>&nbsp;&nbsp;
             <%= link_to raw("<span class='glyphicon glyphicon-trash'></span> Cancel #{event.title}"), event, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' %>            
+           <%= link_to raw("<i class='icon-plus icon-white'></i>Invite Friends"), new_invitation_path, :class => 'btn btn-primary'%>           
           </div>
         <% end %>
       </div>

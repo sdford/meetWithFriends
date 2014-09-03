@@ -8,7 +8,7 @@
       width: 100%;
       float: center;
       position: absolute;
-      left: 42%;
+      left: 44%;
       margin: auto;
       padding: 0;
       list-style: none;
@@ -65,8 +65,8 @@
    <ul id="nav">
       <li><%= link_to raw("Home"), home_path, :id => 'Home' %></li>
       <li><%= link_to raw("Events"), events_path, :id => 'Events' %></li>
-      <li><%= link_to raw("Users"), users_path, :id => 'Users' %></li>
-   </ul>
+<!--       <li><a href="users">Users</a></li>
+ -->   </ul>
    <!-- That's it! -->
    <div id="hack">
       <%= "Welcome, " + current_user.proper_name%>

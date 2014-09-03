@@ -1,0 +1,16 @@
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>invite</th>
+  			<th>person</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Invitation.all.each do |i| %>
+        <tr>
+          <td><%= i.event_id %></td>
+          <td><%= i.user_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
