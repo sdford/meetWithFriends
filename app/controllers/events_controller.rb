@@ -32,7 +32,11 @@ class EventsController < ApplicationController
     if logged_in?
       client = GooglePlaces::Client.new("AIzaSyC5TfII21fg8SeJtbkxc9Whh3kDO-IKCx4")
       client.spots_by_query(@event.location).first
-      location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
+      if current_user.latitude.nil? || current_user.longitude.nil?
+        location = client.spots(40.442492, -79.942553, :radius => 10000, :name => @event.location).first
+      else
+        location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
+      end
       @event.latitude = location.lat
       @event.longitude = location.lng
     end
@@ -51,8 +55,11 @@ class EventsController < ApplicationController
     if logged_in?
       client = GooglePlaces::Client.new("AIzaSyC5TfII21fg8SeJtbkxc9Whh3kDO-IKCx4")
       client.spots_by_query(@event.location).first
-      location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
-      @event.latitude = location.lat
+      if current_user.latitude.nil? || current_user.longitude.nil?
+        location = client.spots(40.442492, -79.942553, :radius => 10000, :name => @event.location).first
+      else
+        location = client.spots(current_user.latitude, current_user.longitude, :radius => 10000, :name => @event.location).first
+      end      @event.latitude = location.lat
       @event.longitude = location.lng
     end
     if @event.update_attributes(params[:event])
