@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
 
   require 'will_paginate/array'
-  before_filter :check_login
 
   def index
   	@user = User.new

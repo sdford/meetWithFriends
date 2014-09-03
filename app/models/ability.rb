@@ -9,6 +9,7 @@ class Ability
         #can :manage, :all
       if user.email.nil?
         can [:create, :update], User
+
       else
         can [:create, :update, :read], User do |u|
           u.email == user.email
