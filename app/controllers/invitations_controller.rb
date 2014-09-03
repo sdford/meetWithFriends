@@ -5,8 +5,8 @@ class InvitationsController < ApplicationController
   
   def new
     @invitation = Invitation.new
-    @users = User.all.map { |u| u.proper_name  }
-    @events = Event.all.map { |e| e.title  }
+    @users = User.all
+    @events = Event.all
   end
 
   def index
@@ -25,7 +25,7 @@ class InvitationsController < ApplicationController
     if @invitation.save
       # if saved to database
       flash[:notice] = "Congratulations! You have created an invitation"
-      redirect_to 
+      redirect_to home_url
     else
       # go back to the 'new' form
       render 'new'

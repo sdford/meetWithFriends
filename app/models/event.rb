@@ -54,6 +54,10 @@ class Event < ActiveRecord::Base
   	end
   end
 
+  def attendees
+    return self.users
+  end
+
   #give points based on timeliness
   def assign_points
     

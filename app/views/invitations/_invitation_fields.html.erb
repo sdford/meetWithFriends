@@ -1,7 +1,7 @@
 <div class="fields">
   <div class="min_attraction">
       <%= f.input :event_id, :collection => @events, :include_blank => false %>
-      <%= f.input :user_id, :collection => @users, :include_blank => false  %>
+      <%= f.input :user_id, :collection => @users.map { |u| [u.proper_name, u.id] }, :include_blank => false  %>
       <%= f.input :checked_in, :input_html => { :value => true }, :as => :hidden %>
       <%= f.input :date, :input_html => { :value => Date.today }, :as => :hidden %>
   </div>
