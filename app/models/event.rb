@@ -4,8 +4,8 @@ class Event < ActiveRecord::Base
   has_many :invitations
   has_many :users, :through => :invitations
 
-  validates_time :start, :before => :end
-  validates_time :end, :after => :end
+  validates_time :start
+  validates_time :end
 
   scope :attendees, joins(:invitations).order('user_id')
   scope :alphabetical, order('title')
