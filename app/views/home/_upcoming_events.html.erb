@@ -66,7 +66,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% User.alphabetical.each do |attendee| %>
+                  <% event.users.each do |attendee| %>
                     <tr>
                       <td><%= link_to (attendee.proper_name), user_path(attendee) %></td>
                       <td><%= attendee.email %></td>
